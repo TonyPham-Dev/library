@@ -1,0 +1,35 @@
+
+
+<style>
+
+    .form__login {
+        position: absolute;
+        width: 40%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid #333;
+        padding:50px;
+        border-radius:10px;
+    }
+</style>
+
+<div class="">
+    
+    <form class="form__login" method="POST" action="/home" autocomplete="off">
+        <div class="text-danger">{{loginfalse}}</div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Mã sinh viên</label>
+            <input type="number" class="form-control user_name" name="studentID" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="nhập mã sinh viên">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Mật khẩu</label>
+            <input type="password" class="form-control password" name="password" id="exampleInputPassword1" placeholder="Mật khẩu">
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Nhớ tài khoản</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Đăng nhập</button>
+    </form>
+</div>

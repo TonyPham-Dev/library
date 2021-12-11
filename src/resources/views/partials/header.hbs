@@ -1,0 +1,80 @@
+<style>
+  .navbar {
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  li {
+    list-style: none;
+  }
+  .nav__img {
+    position: absolute;
+    height: 100%;
+    top: 0%;
+  }
+  .list_item {
+    margin-left: 50px;
+  }
+  .nav-item {
+    margin-left: 20px;
+  }
+  .user {
+    color:#fff;
+    margin-left:30px;
+  }
+  .userName {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 10px;
+  }
+  .nav-item  {
+    cursor: pointer;
+  }
+  @media (max-width: 1023px) {
+    .navbar-brand {
+      display: none;
+    }
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img class="nav__img" src="https://haitrieu.com/wp-content/uploads/2021/11/Logo-DH-Kinh-doanh-va-Cong-nghe-Ha-Noi-HUBT-2.png">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse list_item" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+       
+      <li class="nav-item active">
+        <a class="nav-link" href="home">Trang chủ <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="text-white nav-link" href="books">Sách</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="text-white nav-link disabled" href="borrow">Mượn sách</a>
+      </li>
+      <li class="nav-item">
+        <a class="text-white nav-link disabled" href="payBooks">Trả sách</a>
+      </li>
+    </ul>
+    <form method="GET" action="" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+ <div>
+     {{#with Courses}}
+      <li class="nav-item dropdown">
+        <i class="far fa-user user nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="userName">{{name}}</span></i>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Trang cá nhân</a>
+          <a class="dropdown-item" href="#">Đổi mật khẩu</a>
+          <a class="dropdown-item" href="#">Đăng xuất <i class="fas fa-sign-out-alt"></i></a>
+        </div>
+      </li>
+      {{/with}}
+ </div>
+</nav>

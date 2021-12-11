@@ -1,0 +1,197 @@
+
+{{!-- css --}}
+<style>
+    .content {
+        padding: 10px;
+        background-color: #333;
+        height:100vh;
+    }
+    .form__container {
+        width: 60%;
+        margin:0 auto;
+        color:#fff
+    }
+    .form-borrow {
+        width: 96%;
+        height:40px;
+        position: absolute;
+        bottom: 0;
+        background-color: #fff;
+        border-radius:5px;
+    }
+    .form__option {
+        display: flex;
+        flex-direction: column;
+    }
+    .selected {
+        padding:10px 10px;
+        border-radius:5px;
+    }
+    .timer {
+    }
+    .form-borrow {
+        color:#333;
+        line-height:40px;
+        padding-left: 10px;
+    }
+    .borrow__books {
+        margin-top: 30px;
+        background-color: #fff;
+        border-radius:10px;
+        color:#333;
+        padding:10px;
+        padding-bottom: 50px;
+    }
+    .borrow {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    .books {
+        position: relative;
+        color:#fff;
+        background-color: #333;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        border-radius:10px;
+        padding:10px;
+        padding-bottom: 50px;
+        margin-bottom: 20px;
+    }
+    .user,.time__borrow {
+        margin-right:20px;
+    }
+    .name_student {
+        display: flex;
+        padding:7px 0px;
+    }
+    .name_books {
+        
+    }
+    .time__borrow {
+        display: flex;
+        padding:7px 0px;
+        margin-left:30px;
+    }
+    .books_margin {
+        margin-left: 5px;
+    }
+    .pay_books {
+        position: absolute;
+        bottom:10%;
+        right: 5%;
+    }
+    .pay {
+        padding:10px 10px;
+        border-radius:10px;
+        color:#fff;
+        background-color:#007bff;
+        border:none;
+        border-color:#007bff;
+        outline: none;
+        cursor: pointer;
+    }
+</style>
+
+{{!-- content --}}
+
+<div class="content">
+    <div class="form__container">
+      
+        <form method="POST" action="/borrow">
+       
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputEmail4">Tên sinh viên</label>
+                    <input type="text" class="form-control input_name" name="nameStudent" id="inputEmail4" placeholder="Họ và tên...">
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="inputPassword4">Mã sinh viên</label>
+                    <input type="text" class="form-control input_id" name="studentCode" id="inputPassword4" placeholder="Mã sinh viên...">
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="inputPassword4">Lớp</label>
+                    <input type="text" class="form-control input_class" name="classStudent" id="inputPassword4" placeholder="Lớp...">
+                </div>
+            </div>
+     
+            <div class="form-group form__option">
+                <label for="inputAddress">Tên sách</label>
+                <select class="selected" name="book">
+        {{#each books}}
+                    <option class="option" value="{{this._id}}">{{this.name}}</option>
+        {{/each}}
+                </select>
+
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6 timer">
+                    <label for="inputAddress">Ngày mượn</label>
+                    <div class="form-borrow"></div>
+                </div>
+                <div class="form-group col-md-6">
+                <label for="inputState">Ngày trả</label>
+                <input type="date" class="form-control" name="payDate" id="inputAddress"/>
+                </div>
+                
+            </div>
+           
+            <button type="submit" class="btn btn-primary">Mượn sách</button>
+            
+                
+            </form>
+    </div>
+    
+</div>
+
+<script type="text/javascript">
+            const options = document.querySelectorAll('.option')
+            const formTime = document.querySelector('.form-borrow')
+            let userName = document.querySelector('.input_name')
+
+            let userId = document.querySelector('.input_id') 
+            let userClass = document.querySelector('.input_class')
+            const buttonBorrow = document.querySelector('.btn-primary')
+
+            
+        /*    function valueInput() {
+               const name = userName.onchange = (e) => {
+                    return e.target.value
+                }
+              const nameID =   userId.onchange = (e) => {
+                    return e.target.value
+                }
+             const nameClass =   userClass.onchange = (e) => {
+                    return e.target.value
+                }
+            } */
+            // get value input
+            function getValueInput()  {
+                return {
+                    name : userName.value,
+                    user : userId.value,
+                    class : userClass.value
+                }
+            }
+
+            function button() {
+                buttonBorrow.onclick = (e) => {
+                    e.preventDefault()
+                    console.log(getValueInput())
+                }
+            }
+           
+
+            function times () {
+                const timer = new Date()
+
+                formTime.innerHTML = timer.toLocaleString()
+            }
+            function start () {
+                times()
+            }
+
+            start()
+</script>
+
